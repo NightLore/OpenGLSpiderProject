@@ -1,0 +1,86 @@
+
+<!-- saved from url=(0070)http://users.csc.calpoly.edu/~zwood/teaching/csc471/finalS17/mhilomen/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+   <title>Underwater Scene feat. Dory's Reef</title>
+   <link rel="stylesheet" href="./Spider on a Dock_files/bootstrap.min.css">
+   <link rel="stylesheet" href="./Spider on a Dock_files/style.css">
+</head>
+
+<body class="container">
+
+   <div class="page-header">
+   <center>
+      <h1>Spider on a Dock<br><small>Nathan Lui</small></h1>
+   </center>
+   </div>
+
+      <center><img src="./Spider on a Dock_files/main.png" width="800" height="516"></center><br>
+
+   <div class="well well-lrg">
+      <h1>Description</h1>
+      <p>A simulation of a spider on a dock with many other spiders implemented in OpenGL.</p>
+   </div>
+
+   <div class="well well-lrg">
+      <h1>Controls</h1>
+      <ul>
+         <li>WASD to move</li>
+         <li>Q/E to rotate camera and spider left and right</li>
+         <li>Mouse scroll to look around</li>
+         <li>V to switch perspective</li>
+         <li>C to change spider color</li>
+         <li>Space to place a cobweb</li>
+      </ul>
+      
+   </div>
+   <center><img src="./Spider on a Dock_files/cobwebshot.png" width="800" height="516"></center><br>
+   <center><img src="./Spider on a Dock_files/underview.png" width="800" height="516"></center><br>
+
+   <div class="well well-lrg">
+      <h1>Features</h1>
+      <ul>
+         <li>Directional Lighting</li>
+         <li>Hierarchical Models</li>
+         <li>Camera Control</li>
+         <li>Textures</li>
+         <li>Cubemap</li>
+         <li>Collision Detection</li>
+      </ul>
+   </div>
+   <div class="well well-lrg">
+
+      <h1>Directional Lighting</h1>
+      <p>Directional lighting uses a fragment shader to calculate the color for each fragment based on a provided light direction and the object's coefficients for ambient, diffuse and specular lighting.</p>
+
+      <h1>Hierarchical Modeling</h1>
+      <p>Hierarchical modeling allows us to move shapes around with respect to an arbitrary frame. This makes it less difficult to implement translations and rotations around joints allowing animations of the spiders and placement of entities to be simpler.</p>
+
+      <h1>Camera Control</h1>
+      <p>The camera is fixed to a set distance behind or in front of the player spider (depending on the perspective) and follows the player spider as it moves with the WASD keys and rotates with the mouse scroll, giving a third person interactive feel.</p>
+
+      <h1>Textures</h1>
+      <p>Texture mapping allows the object meshes to be wrapped using selected image files.</p> 
+
+      <h1>Cubemap</h1>
+      <p>Also referred to as a skybox, a cubemap renders a 3D cube that the camera is wrapped around in. The textures mapped on the cube appear to be seamless and look infinitely far away because of how it ignores the camera translation (or essentially follows the camera).</p>
+
+      <center><img src="./Spider on a Dock_files/skybox.png" width="700" height="525"></center><br>
+
+      <h1>Collision Detection</h1>
+      <p>The player spider can collide with any entity in the map through bounding box collision detection where the entities all have a cube that represents them that the player spider can run into. When the player spider is inside another entitie's bounding box, it counts as a collision and the previous movement action is undone. By checking the xyz coordinates individually, the spider will be able to slide along collision lines.</p>
+   </div>
+
+   <div class="well well-lrg">
+      <h1>Resources</h1>
+      <ul>
+         <li><a href="https://learnopengl.com/#!Advanced-OpenGL/Cubemaps">How to Render Cubemaps - https://learnopengl.com/#!Advanced-OpenGL/Cubemaps</a></li>
+         <li><a href="http://www.custommapmakers.org/skyboxes.php">Skyboxes for download - http://www.custommapmakers.org/skyboxes.php</a></li>
+         <li><a href="https://www.filterforge.com/filters/2409.jpg">Cobweb texture - https://www.filterforge.com/filters/2409.jpg</a></li>
+         <li><a href="https://i.stack.imgur.com/pZyd5.jpg">Floor texture - https://i.stack.imgur.com/pZyd5.jpg</a></li>
+         <li><a href="https://pixabay.com/images/search/metal%30texture">Metal Crate Texture - https://pixabay.com/images/search/metal%30texture</a></li>
+      </ul>
+   </div>
+
+
+
+</body></html>
