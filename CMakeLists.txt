@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.7)
 
 # Name of the project
-project(Final)
+project(OpenGLSpiderProject)
 
 # Use glob to get the list of all source files.
 file(GLOB_RECURSE SOURCES "src/*.cpp" "ext/glad/src/*.c")
@@ -16,43 +16,9 @@ include_directories("ext/glad/include")
 # Set the executable.
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCES} ${HEADERS} ${GLSL})
 
-
-
-# Add GLFW
-# Get the GLFW environment variable.
-# There should be a CMakeLists.txt in the specified directory.
-set(GLFW_DIR "$ENV{GLFW_DIR}")
-if(GLFW_DIR)
-  message(STATUS "GLFW environment variable found")
-
-  option(GLFW_BUILD_EXAMPLES "GLFW_BUILD_EXAMPLES" OFF)
-  option(GLFW_BUILD_TESTS "GLFW_BUILD_TESTS" OFF)
-  option(GLFW_BUILD_DOCS "GLFW_BUILD_DOCS" OFF)
-  if(CMAKE_BUILD_TYPE MATCHES Release)
-    add_subdirectory(${GLFW_DIR} ${GLFW_DIR}/release)
-  else()
-    add_subdirectory(${GLFW_DIR} ${GLFW_DIR}/debug)
-  endif()
-
-  include_directories(${GLFW_DIR}/include)
-  target_link_libraries(${CMAKE_PROJECT_NAME} glfw ${GLFW_LIBRARIES})
-else()
-  message(STATUS "GLFW environment variable `GLFW_DIR` not found, GLFW3 must be installed with the system")
-
-  find_package(PkgConfig)
-  if (PKGCONFIG_FOUND)
-    message(STATUS "PkgConfig found")
-    pkg_search_module(GLFW REQUIRED glfw3)
-    include_directories(${GLFW_INCLUDE_DIRS})
-    target_link_libraries(${CMAKE_PROJECT_NAME} ${GLFW_LIBRARIES})
-  else()
-    message(STATUS "No PkgConfig found")
-    find_package(glfw3 REQUIRED)
-    include_directories(${GLFW_INCLUDE_DIRS})
-    target_link_libraries(${CMAKE_PROJECT_NAME} glfw)
-  endif()
-endif()
-
+include_directories("ext/glfw/include")
+add_subdirectory("ext/glfw")
+target_link_libraries(${CMAKE_PROJECT_NAME} glfw ${GLFW_LIBRARIES})
 
 
 # Add GLM
