@@ -355,7 +355,7 @@ public:
 		}
 
 		for (int i = 0; i < NUM_CUBE_TEX; ++i) {
-			cubeTextures[i] = createSky(resourceDirectory, cubeTextureFaces[i]);
+			cubeTextures[i] = createSky(resourceDirectory, cubeFaceTextures[i]);
 		}
 	}
 

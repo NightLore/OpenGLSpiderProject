@@ -1,11 +1,8 @@
 #include "Spider.h"
-#include "Constants.h"
 
 
 using namespace std;
 using namespace glm;
-
-
 
 Spider::Spider()
 {
@@ -86,31 +83,31 @@ void Spider::drawLegs(shared_ptr<Program> prog, shared_ptr<MatrixStack> M, float
 		float xRot = 0;
 		float yRot = (sin(timeAdjust) / 8 - adjustment * i) * leg / distanceAdjust;
 		float zRot = -abs(cos(timeAdjust)) / distanceAdjust;
-		drawLeg(prog, M, vec3(xRot, yRot, zRot), translate, scale);
-		drawLeg(prog, M, vec3(xRot, -yRot, -zRot), -translate, scale);
+		//drawLeg(prog, M, vec3(xRot, yRot, zRot), translate, scale);
+		//drawLeg(prog, M, vec3(xRot, -yRot, -zRot), -translate, scale);
 	}
 	M->popMatrix();
 }
 
-void Spider::drawLeg(shared_ptr<Program> prog, shared_ptr<MatrixStack> M,
-	vec3 rotations, vec3 translate, vec3 scale)
-{
-	M->pushMatrix();
-	M->rotate(rotations.y, YAXIS);
-	M->rotate(rotations.x, XAXIS);
-	M->rotate(rotations.z, ZAXIS);
-	M->translate(translate);
-	M->pushMatrix();
-	M->rotate(M_PI_2, YAXIS);
-	M->rotate(M_PI_2, XAXIS);
-	M->translate(vec3(0, 0.8 * translate.x, 0.8));
-	M->scale(scale);
-	glUniformMatrix4fv(prog->getUniform("M"), 1, GL_FALSE, value_ptr(M->topMatrix()));
-	sphere->draw(prog);
-	M->popMatrix();
-	M->rotate(M_PI_2, YAXIS);
-	M->scale(scale);
-	glUniformMatrix4fv(prog->getUniform("M"), 1, GL_FALSE, value_ptr(M->topMatrix()));
-	sphere->draw(prog);
-	M->popMatrix();
-}
+//void Spider::drawLeg(shared_ptr<Program> prog, shared_ptr<MatrixStack> M,
+//	vec3 rotations, vec3 translate, vec3 scale)
+//{
+//	M->pushMatrix();
+//	M->rotate(rotations.y, YAXIS);
+//	M->rotate(rotations.x, XAXIS);
+//	M->rotate(rotations.z, ZAXIS);
+//	M->translate(translate);
+//	M->pushMatrix();
+//	M->rotate(M_PI_2, YAXIS);
+//	M->rotate(M_PI_2, XAXIS);
+//	M->translate(vec3(0, 0.8 * translate.x, 0.8));
+//	M->scale(scale);
+//	glUniformMatrix4fv(prog->getUniform("M"), 1, GL_FALSE, value_ptr(M->topMatrix()));
+//	sphere->draw(prog);
+//	M->popMatrix();
+//	M->rotate(M_PI_2, YAXIS);
+//	M->scale(scale);
+//	glUniformMatrix4fv(prog->getUniform("M"), 1, GL_FALSE, value_ptr(M->topMatrix()));
+//	sphere->draw(prog);
+//	M->popMatrix();
+//}
